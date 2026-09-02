@@ -37,6 +37,12 @@ test('addAll не выбрасывает ошибку', () => {
     expect(() => team.addAll(archer, archer, wizard)).not.toThrow();
 });
 
+test('addAll не добавляет null и undefined', () => {
+    const team = new Team();
+    team.addAll(null, undefined);
+    expect(team.members.size).toBe(0);
+});
+
 test('add не добавляет ничего, если не было передано ни одного аргумента', () => {
     const team = new Team();
     team.add();
